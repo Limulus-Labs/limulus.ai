@@ -173,34 +173,28 @@
 		<!-- Team Section -->
 		<section class="team">
 			<div class="container">
-				<h2 class="section-title">Kto za tym stoi?</h2>
-				<div class="team-grid">
-					<div class="team-member">
-						<div class="member-avatar"></div>
-						<div class="member-info">
-							<h4>Członek zespołu</h4>
-							<p>Opis roli</p>
-						</div>
+				<div class="team-content">
+					<div class="team-info">
+						<h2 class="team-title">Kto za tym stoi?</h2>
+						<p class="team-description">
+							Limulus AI to projekt stworzony przez Cognitum Services SA - ekspertów od Gen AI, chmur obliczeniowych i automatyzacji procesów.
+						</p>
+						<p class="team-additional">
+							Współpracujemy z Microsoft, OpenAI i zespołami R&D, żeby tworzyć narzędzia, które działają w biznesie.
+						</p>
 					</div>
-					<div class="team-member">
-						<div class="member-avatar"></div>
-						<div class="member-info">
-							<h4>Członek zespołu</h4>
-							<p>Opis roli</p>
+					<div class="partners-grid">
+						<div class="partner-logo cognitum">
+							<div class="logo-placeholder">Cognitum</div>
 						</div>
-					</div>
-					<div class="team-member">
-						<div class="member-avatar"></div>
-						<div class="member-info">
-							<h4>Członek zespołu</h4>
-							<p>Opis roli</p>
+						<div class="partner-logo deliver">
+							<div class="logo-placeholder">Deliver in Person</div>
 						</div>
-					</div>
-					<div class="team-member">
-						<div class="member-avatar"></div>
-						<div class="member-info">
-							<h4>Członek zespołu</h4>
-							<p>Opis roli</p>
+						<div class="partner-logo microsoft">
+							<div class="logo-placeholder">Microsoft</div>
+						</div>
+						<div class="partner-logo openai">
+							<div class="logo-placeholder">OpenAI</div>
 						</div>
 					</div>
 				</div>
@@ -688,37 +682,87 @@
 			/* Team Section */
 			.team {
 				padding: 5rem 0;
-				background: white;
+				background: #360E30;
+				color: white;
 			}
 
-			.team-grid {
+			.team-content {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				grid-template-columns: 1fr 1fr;
+				gap: 4rem;
+				align-items: center;
+			}
+
+			.team-info {
+				max-width: 500px;
+			}
+
+			.team-title {
+				font-size: 2.5rem;
+				font-weight: 700;
+				margin-bottom: 2rem;
+				color: white;
+			}
+
+			.team-description {
+				font-size: 1.1rem;
+				line-height: 1.7;
+				margin-bottom: 1.5rem;
+				color: #E6E6E6;
+			}
+
+			.team-additional {
+				font-size: 1.1rem;
+				line-height: 1.7;
+				color: #E6E6E6;
+			}
+
+			.partners-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
 				gap: 2rem;
-				margin-top: 3rem;
+				background: rgba(255, 255, 255, 0.1);
+				padding: 2rem;
+				border-radius: 12px;
+				backdrop-filter: blur(10px);
 			}
 
-			.team-member {
-				text-align: center;
+			.partner-logo {
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				padding: 1.5rem;
+				background: rgba(255, 255, 255, 0.1);
+				border-radius: 8px;
+				transition: transform 0.3s ease, background-color 0.3s ease;
 			}
 
-			.member-avatar {
-				width: 100px;
-				height: 100px;
-				border-radius: 50%;
-				background: #B02D9C;
-				margin: 0 auto 1rem;
+			.partner-logo:hover {
+				transform: translateY(-3px);
+				background: rgba(255, 255, 255, 0.2);
 			}
 
-			.member-info h4 {
-				font-size: 1.2rem;
-				margin-bottom: 0.5rem;
-				color: #333;
+			.logo-placeholder {
+				font-weight: 600;
+				font-size: 0.9rem;
+				color: #E6E6E6;
+				text-align: center;
 			}
 
-			.member-info p {
-				color: #666;
+			.partner-logo.cognitum .logo-placeholder {
+				color: #B02D9C;
+			}
+
+			.partner-logo.microsoft .logo-placeholder {
+				color: #00BCF2;
+			}
+
+			.partner-logo.openai .logo-placeholder {
+				color: #10A37F;
+			}
+
+			.partner-logo.deliver .logo-placeholder {
+				color: #FF6B35;
 			}
 
 			/* FAQ Section */
@@ -896,7 +940,8 @@
 				.event-content,
 				.booking-content,
 				.footer-content,
-				.benefits-content {
+				.benefits-content,
+				.team-content {
 					grid-template-columns: 1fr;
 				}
 
