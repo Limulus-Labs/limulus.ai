@@ -10,7 +10,7 @@ import ArrowRight from "../../assets/icons/arrow-right.svg";
 import ArrowLeft from "../../assets/icons/arrow-left.svg";
 
 export async function getStaticPaths() {
-  const PER_PAGE = 6;
+  const PER_PAGE = 9;
   const posts: BlogPost[] = (
     await getCollection<"blog">("blog", (entry: BlogPost) => !entry.data.draft)
   ).sort(
@@ -28,7 +28,7 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const PER_PAGE = 6;
+const PER_PAGE = 9;
 
 const raw = Astro.params.page;
 const currentPage = Math.max(1, Number(raw ?? 1));

@@ -9,7 +9,7 @@ import BlogHero from "../../assets/blog/blog-hero.jpg";
 import ArrowRight from "../../assets/icons/arrow-right.svg";
 import ArrowLeft from "../../assets/icons/arrow-left.svg";
 
-const PER_PAGE = 6;
+const PER_PAGE = 9;
 
 const posts: BlogPost[] = (
   await getCollection<"blog">("blog", (entry: BlogPost) => !entry.data.draft)
