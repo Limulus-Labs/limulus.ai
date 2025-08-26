@@ -1,0 +1,43 @@
+---
+import ContactImg from "../assets/contact.png";
+import Location from "../assets/icons/location-white.svg";
+import Linkedin from "../assets/icons/linkedin.svg";
+import Facebook from "../assets/icons/facebook.svg";
+import Twitter from "../assets/icons/twitter.svg";
+---
+
+<section class="contact">
+  <div class="container">
+    <h2>Skontaktuj się z nami</h2>
+    <div class="contact-content">
+      <div class="contact-info">
+        <p class="contct-firm">Cognitum Services S.A.</p>
+        <a class="contact-mail p" href="mailto:office@cognitum.eu"
+          >office@cognitum.eu</a
+        >
+        <div class="contact-location">
+          <img
+            class="contact-location-icon"
+            src={Location.src}
+            alt="Lokalizacja"
+          />
+          <p>Warszawa ul. Krucza 16/22, 00-526</p>
+        </div>
+        <div class="contact-social">
+          <a href="https://www.linkedin.com/company/cognitum" target="_blank">
+            <img src={Linkedin.src} alt="Linkedin" /></a
+          >
+          <a href="https://www.facebook.com/cognitum.eu" target="_blank">
+            <img src={Facebook.src} alt="Facebook" /></a
+          >
+          <a href="https://x.com/cognitum_eu" target="_blank">
+            <img src={Twitter.src} alt="Twitter" /></a
+          >
+        </div>
+      </div>
+      <div class="contact-image">
+        <img src={ContactImg.src} alt="Office" />
+      </div>
+    </div>
+  </div>
+</section>

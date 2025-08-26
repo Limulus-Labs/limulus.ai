@@ -1,0 +1,22 @@
+---
+import "../styles/main.scss";
+const { title = "Limulus", description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="icon" type="image/svg+xml" />
+  </head>
+  <body>
+    <slot />
+    <script src="/src/scripts/main.js"></script>
+    <script src="/src/scripts/calendar.js"></script>
+    <script src="/src/scripts/form.js"></script>
+  </body>
+</html>
