@@ -8,7 +8,7 @@ const { white = false } = Astro.props;
 
 <header class={`container-fluid menu ${white ? "menu--white" : ""}`}>
   <div class="container menu-container">
-    <a href="/limulus">
+    <a href="/limulus.ai">
       {
         white ? (
           <img src={LogoPrimary.src} alt="Limulus logo" class="menu-logo" />
@@ -21,9 +21,9 @@ const { white = false } = Astro.props;
       <a href="/limulus.ai/blog" class="p--big menu-blog">Blog</a>
       {
         white ? (
-          <Button label="Zapisz się" href="/limulus#about" />
+          <Button label="Zapisz się" href="/limulus.ai#about" />
         ) : (
-          <Button label="Zapisz się" href="/limulus#about" white />
+          <Button label="Zapisz się" href="/limulus.ai#about" white />
         )
       }
     </div>
@@ -32,7 +32,7 @@ const { white = false } = Astro.props;
 
 <header class={`container-fluid mobile-menu ${white ? "menu--white" : ""}`}>
   <div class="menu-top container">
-    <a href="/limulus">
+    <a href="/limulus.ai">
       <img src={Logo.src} alt="Limulus logo" class="menu-logo" />
     </a>
     <a href="/limulus.ai/blog" class="p--big menu-blog">Blog</a>
