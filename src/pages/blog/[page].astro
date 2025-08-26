@@ -54,7 +54,7 @@ const end = start + PER_PAGE;
 const pageItems: BlogPost[] = posts.slice(start, end);
 
 const pageHref = (n: number) =>
-  n === 1 ? "/limulus/blog/" : `/limulus/blog/${n}/`;
+  n === 1 ? "/limulus.ai/blog/" : `/limulus.ai/blog/${n}/`;
 const hasPrev = currentPage > 1;
 const hasNext = currentPage < lastPage;
 ---
@@ -73,7 +73,7 @@ const hasNext = currentPage < lastPage;
         {
           pageItems.map((p: BlogPost) => (
             <BlogCard
-              href={`/limulus/blog/${p.slug}/`}
+              href={`/limulus.ai/blog/${p.slug}/`}
               title={p.data.title}
               date={p.data.pubDate}
               description={p.data.description}

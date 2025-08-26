@@ -48,8 +48,8 @@ const readMins = readingTime(post.body);
 const heroImg = post.data.heroImage;
 const heroAlt = post.data.imageAlt ?? post.data.title;
 
-const toListHref = "/limulus/blog/";
-const toPostHref = (p: BlogPost) => `/limulus/blog/${p.slug}/`;
+const toListHref = "/limulus.ai/blog/";
+const toPostHref = (p: BlogPost) => `/limulus.ai/blog/${p.slug}/`;
 ---
 
 <Layout title={post.data.title}>
