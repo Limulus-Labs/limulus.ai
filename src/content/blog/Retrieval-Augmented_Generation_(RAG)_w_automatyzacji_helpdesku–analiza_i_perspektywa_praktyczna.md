@@ -2,8 +2,8 @@
 title: "Retrieval-Augmented Generation (RAG) w automatyzacji helpdesku – analiza i perspektywa praktyczna"
 description: "Jak połączenie wyszukiwania w czasie rzeczywistym i generatywnej AI zmienia obsługę IT w polskich przedsiębiorstwach"
 pubDate: 2025-08-12
-heroImage: "../../assets/blog/robot.jpg"
-imageAlt: "Robot w magazynie"
+heroImage: "../../assets/blog/data-analysis-tools.jpg"
+imageAlt: "Laptop z hologramami AI i danymi."
 ---
 
 <p>Tradycyjne boty FAQ czy modele AI trenowane na zamkniętych zbiorach danych mają ograniczenia: brak kontekstu, niska trafność odpowiedzi, trudna skalowalność i wysokie koszty utrzymania. <strong>Retrieval-Augmented Generation (RAG)</strong> przełamuje te bariery, łącząc <strong>bieżące wyszukiwanie informacji w firmowych zasobach</strong> z generatywnymi możliwościami dużych modeli językowych (LLM).</p>

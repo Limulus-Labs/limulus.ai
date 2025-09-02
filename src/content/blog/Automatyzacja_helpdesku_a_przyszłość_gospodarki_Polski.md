@@ -2,8 +2,8 @@
 title: "Automatyzacja helpdesku a przyszłość gospodarki Polski: odpowiedź na braki kadrowe i impuls dla produktywności"
 description: "Sztuczna inteligencja i automatyzacja obsługi klienta jako narzędzie wzrostu efektywności i odporności gospodarki"
 pubDate: 2025-08-12
-heroImage: "../../assets/blog/robot.jpg"
-imageAlt: "Robot w magazynie"
+heroImage: "../../assets/blog/woman-laptop.jpg"
+imageAlt: "Konsultantka obsługi klienta"
 ---
 
 <p>Polska stoi dziś przed podobnymi wyzwaniami, jakie dotykają wiele rozwiniętych gospodarek &ndash; rosnące koszty pracy, niedobory wykwalifikowanych pracownik&oacute;w w kluczowych sektorach oraz presja na zwiększenie efektywności operacyjnej. Branże takie jak <strong>ochrona zdrowia, finanse, administracja publiczna, edukacja, IT i handel detaliczny</strong> już zaczynają wdrażać automatyzację helpdesku opartą na sztucznej inteligencji &ndash; w formie chatbot&oacute;w, wirtualnych asystent&oacute;w i inteligentnego zarządzania przepływem pracy.</p>

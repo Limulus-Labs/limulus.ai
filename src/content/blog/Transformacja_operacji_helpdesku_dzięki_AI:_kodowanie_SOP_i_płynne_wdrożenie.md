@@ -2,8 +2,8 @@
 title: "Transformacja operacji helpdesku dzięki AI: kodowanie SOP i płynne wdrożenie"
 description: "Jak przenieść firmowe procedury do środowiska automatyzacji AI i zapewnić efektywną zmianę"
 pubDate: 2025-08-12
-heroImage: "../../assets/blog/robot.jpg"
-imageAlt: "Robot w magazynie"
+heroImage: "../../assets/blog/digital-icons.jpg"
+imageAlt: "Klawiatura z hologramami SOP"
 ---
 
 <p>Dynamiczny rozw&oacute;j technologii sztucznej inteligencji w ostatnich latach zmienił spos&oacute;b, w jaki polskie przedsiębiorstwa realizują wsparcie IT i obsługę klienta. Kluczowym elementem tej transformacji jest <strong>przeniesienie Standardowych Procedur Operacyjnych (SOP)</strong> z form dokument&oacute;w do <strong>aktywnej, maszynowo odczytywalnej postaci</strong> w systemach automatyzacji.</p>

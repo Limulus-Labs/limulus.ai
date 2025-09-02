@@ -2,7 +2,7 @@
 title: "Jak automatyzacja helpdesku zmienia branżę dostaw paczek"
 description: "Od redukcji nieudanych doręczeń po poprawę doświadczeń klientów – rola AI w logistyce ostatniej mili"
 pubDate: 2025-08-12
-heroImage: "../../assets/blog/robot.jpg"
+heroImage: "../../assets/blog/Warehouse.jpg"
 imageAlt: "Robot w magazynie"
 ---
 

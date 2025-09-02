@@ -2,8 +2,8 @@
 title: "Koniec z adresami „noreply@”"
 description: "Sztuczna inteligencja zastępuje przestarzałe kanały jednokierunkowe skalowalną, dwustronną komunikacją z klientem"
 pubDate: 2025-08-12
-heroImage: "../../assets/blog/robot.jpg"
-imageAlt: "Robot w magazynie"
+heroImage: "../../assets/blog/mail.jpg"
+imageAlt: "Laptop z e-mail"
 ---
 
 <p>W erze biznesu zorientowanego na klienta firmy w Polsce i na świecie stopniowo odchodzą od praktyki wysyłania wiadomości z adres&oacute;w typu <em>noreply@</em>. Jeszcze niedawno były one wygodnym narzędziem automatyzacji korespondencji, dziś jednak coraz częściej postrzega się je jako symbol braku otwartości i niechęci do dialogu.</p>
