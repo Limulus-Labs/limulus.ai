@@ -2,13 +2,29 @@
 import LogoPrimary from "../assets/icons/logo-primary.svg";
 import Logo from "../assets/icons/logo.svg";
 import Button from "../components/ui/Button.astro";
+import LanguageSwitcher from "../components/ui/LanguageSwitcher.astro";
 
-const { white = false } = Astro.props;
+const { white = false, defaultLocale = "en" } = Astro.props;
+
+const rawBase = Astro.site?.pathname || "/";
+const root = rawBase.endsWith("/") ? rawBase.slice(0, -1) : rawBase;
+
+const { pathname } = Astro.url;
+const isPL =
+  pathname === `${root}/pl` ||
+  pathname.startsWith(`${root}/pl/`) ||
+  defaultLocale === "pl";
+
+const locBase = isPL ? `${root}/pl` : `${root}`;
+
+const homeHref = `${locBase}/`;
+const blogHref = `${locBase}/blog/`;
+const ctaHref = `${locBase}/#about`;
 ---
 
 <header class={`container-fluid menu ${white ? "menu--white" : ""}`}>
   <div class="container menu-container">
-    <a href="/limulus.ai">
+    <a href={homeHref}>
       {
         white ? (
           <img src={LogoPrimary.src} alt="Limulus logo" class="menu-logo" />
@@ -18,12 +34,17 @@ const { white = false } = Astro.props;
       }
     </a>
     <div class="menu-right">
-      <a href="/limulus.ai/blog" class="p--big menu-blog">Blog</a>
+      <LanguageSwitcher defaultLocale={isPL ? "pl" : "en"} />
+      <a href={blogHref} class="p--big menu-blog">Blog</a>
       {
         white ? (
-          <Button label="Zapisz się" href="/limulus.ai#about" />
+          <Button label={isPL ? "Zapisz się" : "Register"} href={ctaHref} />
         ) : (
-          <Button label="Zapisz się" href="/limulus.ai#about" white />
+          <Button
+            label={isPL ? "Zapisz się" : "Register"}
+            href={ctaHref}
+            white
+          />
         )
       }
     </div>
@@ -32,13 +53,18 @@ const { white = false } = Astro.props;
 
 <header class={`container-fluid mobile-menu ${white ? "menu--white" : ""}`}>
   <div class="menu-top container">
-    <a href="/limulus.ai">
+    <a href={homeHref}>
       <img src={Logo.src} alt="Limulus logo" class="menu-logo" />
     </a>
-    <a href="/limulus.ai/blog" class="p--big menu-blog">Blog</a>
+    <a href={blogHref} class="p--big menu-blog">Blog</a>
+    <LanguageSwitcher defaultLocale={isPL ? "pl" : "en"} />
   </div>
 </header>
 
 <div class="container-fluid menu-bottom">
-  <Button label="Zapisz się" href="#about" class="cta-button" />
+  <Button
+    label={isPL ? "Zapisz się" : "Register"}
+    href={ctaHref}
+    class="cta-button"
+  />
 </div>

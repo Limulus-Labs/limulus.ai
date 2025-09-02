@@ -2,7 +2,7 @@
 title: "Automatyzacja helpdesku dzięki AI Tool Calling"
 description: "Jak bezpieczne, zautomatyzowane akcje w czasie rzeczywistym zmieniają wsparcie IT w polskich przedsiębiorstwach"
 pubDate: 2025-08-12
-heroImage: "../../assets/blog/Benefits-of-Artificial-Intelligence.webp"
+heroImage: "../../../assets/blog/Benefits-of-Artificial-Intelligence.webp"
 imageAlt: "Smartfon z hologramem czatu AI"
 ---
 

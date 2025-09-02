@@ -1,0 +1,68 @@
+---
+const LOCALES = ["en", "pl"] as const;
+type Locale = (typeof LOCALES)[number];
+interface Props {
+  defaultLocale?: Locale;
+}
+const { defaultLocale = "en" }: Props = Astro.props;
+
+const { pathname } = Astro.url;
+const rawBase = Astro.site?.pathname || "/";
+const baseNoSlash = rawBase.endsWith("/") ? rawBase.slice(0, -1) : rawBase;
+
+function getLocale(path: string): Locale {
+  const afterBase = path.slice(baseNoSlash.length);
+  const [, maybe] = afterBase.split("/");
+  return (LOCALES as readonly string[]).includes(maybe)
+    ? (maybe as Locale)
+    : defaultLocale;
+}
+function switchLocale(path: string, to: Locale): string {
+  const current = getLocale(path);
+  const plPrefix = `${baseNoSlash}/pl`;
+  if (to === "pl" && current !== "pl") {
+    if (path === baseNoSlash || path === `${baseNoSlash}/`)
+      return `${plPrefix}/`;
+    return `${plPrefix}${path.slice(baseNoSlash.length) || "/"}`;
+  }
+  if (to === "en" && current === "pl") {
+    if (path === plPrefix || path === `${plPrefix}/`) return `${baseNoSlash}/`;
+    return `${baseNoSlash}${path.slice(plPrefix.length) || "/"}`;
+  }
+  return path;
+}
+
+const current = getLocale(pathname);
+const label = current === "pl" ? "🇵🇱 PL" : "🇬🇧 EN";
+const hrefEN = switchLocale(pathname, "en");
+const hrefPL = switchLocale(pathname, "pl");
+---
+
+<div class="lang-root">
+  <button
+    class="lang-btn"
+    id="langBtn"
+    type="button"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+  >
+    {label}
+  </button>
+
+  <ul class="lang-menu" id="langMenu" role="listbox" hidden>
+    <li>
+      <a
+        href={hrefEN}
+        role="option"
+        aria-selected={current === "en" ? "true" : "false"}>🇬🇧 EN</a
+      >
+    </li>
+    <li>
+      <a
+        href={hrefPL}
+        role="option"
+        aria-selected={current === "pl" ? "true" : "false"}>🇵🇱 PL</a
+      >
+    </li>
+  </ul>
+</div>

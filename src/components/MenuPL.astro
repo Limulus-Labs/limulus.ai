@@ -1,0 +1,51 @@
+---
+import LogoPrimary from "../assets/icons/logo-primary.svg";
+import Logo from "../assets/icons/logo.svg";
+import Button from "../components/ui/Button.astro";
+import LanguageSwitcher from "../components/ui/LanguageSwitcher.astro";
+
+const { white = false } = Astro.props;
+
+const rawBase = Astro.site?.pathname || "/";
+const base = "/limulus.ai";
+const plBase = `${base}/pl/`;
+---
+
+<header class={`container-fluid menu ${white ? "menu--white" : ""}`}>
+  <div class="container menu-container">
+    <a href={plBase}>
+      {
+        white ? (
+          <img src={LogoPrimary.src} alt="Limulus logo" class="menu-logo" />
+        ) : (
+          <img src={Logo.src} alt="Limulus logo" class="menu-logo" />
+        )
+      }
+    </a>
+    <div class="menu-right">
+      <LanguageSwitcher defaultLocale="pl" />
+      <a href={`${plBase}blog`} class="p--big menu-blog">Blog</a>
+      {
+        white ? (
+          <Button label="Zapisz się" href={`${plBase}#about`} />
+        ) : (
+          <Button label="Zapisz się" href={`${plBase}#about`} white />
+        )
+      }
+    </div>
+  </div>
+</header>
+
+<header class={`container-fluid mobile-menu ${white ? "menu--white" : ""}`}>
+  <div class="menu-top container">
+    <a href={plBase}>
+      <img src={Logo.src} alt="Limulus logo" class="menu-logo" />
+    </a>
+    <a href={`${plBase}blog`} class="p--big menu-blog">Blog</a>
+    <LanguageSwitcher defaultLocale="pl" />
+  </div>
+</header>
+
+<div class="container-fluid menu-bottom">
+  <Button label="Zapisz się" href="pl/#about" class="cta-button" />
+</div>

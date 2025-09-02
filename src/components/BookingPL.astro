@@ -6,24 +6,24 @@ import "flatpickr/dist/flatpickr.css";
 
 <section class="booking" id="about">
   <div class="container">
-    <h2>Register for the event</h2>
+    <h2>Zapisz się na wydarzenie</h2>
     <div class="booking-content">
       <div class="booking-info">
         <h5 class="booking-subtitle">
-          Don’t wait until your competitors start moving faster than you.
+          Nie czekaj, aż konkurencja zacznie działać szybciej od Ciebie.
         </h5>
         <div class="booking-image">
           <div class="booking-image-container">
-            <img src={Events.src} alt="Location" />
+            <img src={Events.src} alt="Lokalizacja" />
             <div class="booking-image-overlay"></div>
           </div>
         </div>
         <div class="booking-deadlines">
-          <p class="p--small booking-deadlines-title">Dates:</p>
+          <p class="p--small booking-deadlines-title">Terminy:</p>
           <ul>
-            <li><p class="p--small">23.09 / Warsaw - 17:30, 20:30</p></li>
-            <li><p class="p--small">21.10 / Warsaw - 17:30, 20:30</p></li>
-            <li><p class="p--small">07.10 / Warsaw - 17:30, 20:30</p></li>
+            <li><p class="p--small">23.09 / Warszawa - 17:30, 20:30</p></li>
+            <li><p class="p--small">21.10 / Warszawa - 17:30, 20:30</p></li>
+            <li><p class="p--small">07.10 / Warszawa - 17:30, 20:30</p></li>
           </ul>
         </div>
       </div>
@@ -38,26 +38,26 @@ import "flatpickr/dist/flatpickr.css";
         >
           <h3 class="form-message" id="formMessage"></h3>
           <div class="booking-field">
-            <label class="booking-label" for="fullName">Full name*</label>
+            <label class="booking-label" for="fullName">Imię i nazwisko*</label>
             <input
               class="booking-input"
               type="text"
               id="fullName"
               name="name"
-              placeholder="Full name*"
+              placeholder="Imię i nazwisko*"
               required
             />
             <div class="error-message" id="fullNameError"></div>
           </div>
 
           <div class="booking-field">
-            <label class="booking-label" for="company">Company*</label>
+            <label class="booking-label" for="company">Firma*</label>
             <input
               class="booking-input"
               type="text"
               id="company"
               name="company"
-              placeholder="Company*"
+              placeholder="Firma*"
               required
             />
             <div class="error-message" id="companyError"></div>
@@ -77,13 +77,13 @@ import "flatpickr/dist/flatpickr.css";
           </div>
 
           <div class="booking-field">
-            <label class="booking-label" for="phone">Phone*</label>
+            <label class="booking-label" for="phone">Telefon*</label>
             <input
               class="booking-input"
               type="tel"
               id="phone"
               name="phone"
-              placeholder="Phone*"
+              placeholder="Telefon*"
               required
             />
             <div class="error-message" id="phoneError"></div>
@@ -91,7 +91,7 @@ import "flatpickr/dist/flatpickr.css";
 
           <div class="booking-field booking-field--date">
             <label class="booking-label" for="eventDate"
-              >Select event date*</label
+              >Wybierz termin wydarzenia*</label
             >
 
             <input
@@ -99,7 +99,7 @@ import "flatpickr/dist/flatpickr.css";
               type="text"
               id="eventDate"
               name="eventDate"
-              placeholder="Select event date*"
+              placeholder="Wybierz termin wydarzenia*"
               required
               readonly
             />
@@ -110,20 +110,20 @@ import "flatpickr/dist/flatpickr.css";
             <label class="booking-checkbox">
               <input type="checkbox" name="marketingConsent" />
               <span class="booking-checkbox-box" aria-hidden="true"></span>
-              <span class="booking-checkbox-label">Marketing consent</span>
+              <span class="booking-checkbox-label">Zgoda marketingowa</span>
             </label>
 
             <label class="booking-checkbox">
               <input type="checkbox" name="rodoConsent" />
               <span class="booking-checkbox-box" aria-hidden="true"></span>
-              <span class="booking-checkbox-label">GDPR consent</span>
+              <span class="booking-checkbox-label">Zgoda RODO</span>
             </label>
             <div class="error-message" id="rodoError"></div>
           </div>
 
           <div class="booking-actions">
             <button class="button event-button" type="submit" id="submitBtn">
-              Register
+              Zapisz się
             </button>
           </div>
         </form>

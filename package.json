@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "astro": "^5.13.2",
+    "astro-i18next": "^1.0.0-beta.21",
     "flatpickr": "^4.6.13"
   },
   "devDependencies": {

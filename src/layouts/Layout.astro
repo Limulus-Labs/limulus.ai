@@ -1,10 +1,10 @@
 ---
 import "../styles/main.scss";
-const { title = "Limulus", description } = Astro.props;
+const { title = "Limulus", description, lang = "en" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="pl">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -18,5 +18,6 @@ const { title = "Limulus", description } = Astro.props;
     <script src="/src/scripts/main.js"></script>
     <script src="/src/scripts/calendar.js"></script>
     <script src="/src/scripts/form.js"></script>
+    <script src="/src/scripts/language-switcher.js"></script>
   </body>
 </html>

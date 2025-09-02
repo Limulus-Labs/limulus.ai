@@ -1,20 +1,23 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Menu from "../../components/Menu.astro";
-import Footer from "../../components/Fotter.astro";
-import BlogCard from "../../components/ui/BlogCard.astro";
+import Layout from "../../../layouts/Layout.astro";
+import Menu from "../../../components/Menu.astro";
+import Footer from "../../../components/Fotter.astro";
+import BlogCard from "../../../components/ui/BlogCard.astro";
 import { getCollection } from "astro:content";
-import type { BlogPost } from "../../types/blog";
-import BlogHero from "../../assets/blog/blog-hero.jpg";
-import ArrowRight from "../../assets/icons/arrow-right.svg";
-import ArrowLeft from "../../assets/icons/arrow-left.svg";
+import type { BlogPostPl } from "../../../types/blog";
+import BlogHero from "../../../assets/blog/blog-hero.jpg";
+import ArrowRight from "../../../assets/icons/arrow-right.svg";
+import ArrowLeft from "../../../assets/icons/arrow-left.svg";
 
 export async function getStaticPaths() {
   const PER_PAGE = 9;
-  const posts: BlogPost[] = (
-    await getCollection<"blog">("blog", (entry: BlogPost) => !entry.data.draft)
+  const posts: BlogPostPl[] = (
+    await getCollection<"pl/blog">(
+      "pl/blog",
+      (entry: BlogPostPl) => !entry.data.draft
+    )
   ).sort(
-    (a: BlogPost, b: BlogPost) =>
+    (a: BlogPostPl, b: BlogPostPl) =>
       b.data.pubDate.getTime() - a.data.pubDate.getTime()
   );
 
@@ -32,10 +35,13 @@ const PER_PAGE = 9;
 
 const raw = Astro.params.page;
 const currentPage = Math.max(1, Number(raw ?? 1));
-const posts: BlogPost[] = (
-  await getCollection<"blog">("blog", (entry: BlogPost) => !entry.data.draft)
+const posts: BlogPostPl[] = (
+  await getCollection<"pl/blog">(
+    "pl/blog",
+    (entry: BlogPostPl) => !entry.data.draft
+  )
 ).sort(
-  (a: BlogPost, b: BlogPost) =>
+  (a: BlogPostPl, b: BlogPostPl) =>
     b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
 
@@ -51,15 +57,16 @@ if (
 
 const start = (currentPage - 1) * PER_PAGE;
 const end = start + PER_PAGE;
-const pageItems: BlogPost[] = posts.slice(start, end);
+const pageItems: BlogPostPl[] = posts.slice(start, end);
 
 const pageHref = (n: number) =>
-  n === 1 ? "/limulus.ai/blog/" : `/limulus.ai/blog/${n}/`;
+  n === 1 ? "/limulus.ai/pl/blog/" : `/limulus.ai/pl/blog/${n}/`;
+
 const hasPrev = currentPage > 1;
 const hasNext = currentPage < lastPage;
 ---
 
-<Layout lang="en" title={`Blog — strona ${currentPage}`}>
+<Layout lang="pl" title={`Blog — strona ${currentPage}`}>
   <Menu white />
   <section class="blog-hero">
     <img src={BlogHero.src} alt="Blog Hero" />
@@ -71,9 +78,9 @@ const hasNext = currentPage < lastPage;
     <div class="container">
       <div class="blog-list">
         {
-          pageItems.map((p: BlogPost) => (
+          pageItems.map((p: BlogPostPl) => (
             <BlogCard
-              href={`/limulus.ai/blog/${p.slug}/`}
+              href={`/limulus.ai/pl/blog/${p.slug}/`}
               title={p.data.title}
               date={p.data.pubDate}
               description={p.data.description}
@@ -86,7 +93,7 @@ const hasNext = currentPage < lastPage;
 
       {
         lastPage > 1 && (
-          <nav class="pagination" aria-label="Pagination">
+          <nav class="pagination" aria-label="Paginacja">
             {hasPrev ? (
               <a
                 class="page-arrow"
@@ -127,7 +134,7 @@ const hasNext = currentPage < lastPage;
               </a>
             ) : (
               <a class="page-arrow disabled" aria-disabled="true">
-                <img src={ArrowRight.src} alt="Strzałka в prawo" />
+                <img src={ArrowRight.src} alt="Strzałka w prawo" />
               </a>
             )}
           </nav>

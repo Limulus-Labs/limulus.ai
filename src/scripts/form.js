@@ -4,6 +4,44 @@ const WEBHOOK_URL = "https://hook.eu2.make.com/mmw4gixrn3lf0yufupntz8jnr7stb37z"
     const form = document.getElementById("bookingForm");
     if (!form) return;
 
+    // === i18n ===============================================================
+    const formLocale = form.getAttribute("data-locale");
+    const htmlLocale = document.documentElement.lang;
+    const currentLang = (formLocale || htmlLocale || "pl").toLowerCase().startsWith("en") ? "en" : "pl";
+
+    const M = {
+        pl: {
+            required: "To pole jest wymagane.",
+            fullName: "Podaj imię i nazwisko (min. dwa słowa).",
+            company: "Nazwa firmy jest za krótka.",
+            email: "Podaj poprawny adres e-mail.",
+            phone: "Podaj poprawny numer telefonu (np. 123 456 789 lub +48 ...).",
+            eventDateRequired: "Wybierz termin wydarzenia.",
+            eventDateInvalid: "Nieprawidłowy format daty.",
+            eventDatePast: "Termin nie może być w przeszłości.",
+            rodo: "Zaznacz zgodę RODO, aby kontynuować.",
+            cfgWebhook: "Błąd konfiguracji: brak poprawnego adresu Webhook.",
+            success: "Dziękujemy! Do zobaczenia na wydarzeniu.",
+            fail: "Ups! Nie udało się wysłać formularza. Spróbuj ponownie.",
+        },
+        en: {
+            required: "This field is required.",
+            fullName: "Please enter your full name (at least two words).",
+            company: "The company name is too short.",
+            email: "Please provide a valid e-mail address.",
+            phone: "Please provide a valid phone number (e.g. 123 456 789 or +48 ...).",
+            eventDateRequired: "Please select an event date.",
+            eventDateInvalid: "Invalid date format.",
+            eventDatePast: "The date cannot be in the past.",
+            rodo: "Please check GDPR consent to continue.",
+            cfgWebhook: "Configuration error: invalid Webhook URL.",
+            success: "Thank you! See you at the event.",
+            fail: "Oops! The form could not be sent. Please try again.",
+        },
+    };
+    const t = (key) => (M[currentLang] && M[currentLang][key]) || key;
+    // =======================================================================
+
     const els = {
         fullName: document.getElementById("fullName"),
         company: document.getElementById("company"),
@@ -153,15 +191,11 @@ const WEBHOOK_URL = "https://hook.eu2.make.com/mmw4gixrn3lf0yufupntz8jnr7stb37z"
     function validateFullName() {
         const v = els.fullName.value;
         if (!v.trim()) {
-            setError(els.fullName, els.errors.fullName, "To pole jest wymagane.");
+            setError(els.fullName, els.errors.fullName, t("required"));
             return false;
         }
         if (!isValidName(v)) {
-            setError(
-                els.fullName,
-                els.errors.fullName,
-                "Podaj imię i nazwisko (min. dwa słowa)."
-            );
+            setError(els.fullName, els.errors.fullName, t("fullName"));
             return false;
         }
         clearError(els.fullName, els.errors.fullName);
@@ -170,11 +204,11 @@ const WEBHOOK_URL = "https://hook.eu2.make.com/mmw4gixrn3lf0yufupntz8jnr7stb37z"
     function validateCompany() {
         const v = els.company.value;
         if (!v.trim()) {
-            setError(els.company, els.errors.company, "To pole jest wymagane.");
+            setError(els.company, els.errors.company, t("required"));
             return false;
         }
         if (!isValidCompany(v)) {
-            setError(els.company, els.errors.company, "Nazwa firmy jest za krótka.");
+            setError(els.company, els.errors.company, t("company"));
             return false;
         }
         clearError(els.company, els.errors.company);
@@ -183,11 +217,11 @@ const WEBHOOK_URL = "https://hook.eu2.make.com/mmw4gixrn3lf0yufupntz8jnr7stb37z"
     function validateEmail() {
         const el = els.email;
         if (!el.value.trim()) {
-            setError(el, els.errors.email, "To pole jest wymagane.");
+            setError(el, els.errors.email, t("required"));
             return false;
         }
         if (!isValidEmail(el)) {
-            setError(el, els.errors.email, "Podaj poprawny adres e-mail.");
+            setError(el, els.errors.email, t("email"));
             return false;
         }
         clearError(el, els.errors.email);
@@ -196,15 +230,11 @@ const WEBHOOK_URL = "https://hook.eu2.make.com/mmw4gixrn3lf0yufupntz8jnr7stb37z"
     function validatePhone() {
         const v = els.phone.value;
         if (!v.trim()) {
-            setError(els.phone, els.errors.phone, "To pole jest wymagane.");
+            setError(els.phone, els.errors.phone, t("required"));
             return false;
         }
         if (!isValidPhone(v)) {
-            setError(
-                els.phone,
-                els.errors.phone,
-                "Podaj poprawny numer telefonu (np. 123 456 789 lub +48 ...)."
-            );
+            setError(els.phone, els.errors.phone, t("phone"));
             return false;
         }
         clearError(els.phone, els.errors.phone);
@@ -213,16 +243,16 @@ const WEBHOOK_URL = "https://hook.eu2.make.com/mmw4gixrn3lf0yufupntz8jnr7stb37z"
     function validateEventDate() {
         const raw = els.eventDate.value;
         if (!raw.trim()) {
-            setError(els.eventDate, els.errors.eventDate, "Wybierz termin wydarzenia.");
+            setError(els.eventDate, els.errors.eventDate, t("eventDateRequired"));
             return false;
         }
         const d = parseEventDate(raw);
         if (!d) {
-            setError(els.eventDate, els.errors.eventDate, "Nieprawidłowy format daty.");
+            setError(els.eventDate, els.errors.eventDate, t("eventDateInvalid"));
             return false;
         }
         if (!isValidFutureOrToday(d)) {
-            setError(els.eventDate, els.errors.eventDate, "Termin nie może być w przeszłości.");
+            setError(els.eventDate, els.errors.eventDate, t("eventDatePast"));
             return false;
         }
         clearError(els.eventDate, els.errors.eventDate);
@@ -230,7 +260,7 @@ const WEBHOOK_URL = "https://hook.eu2.make.com/mmw4gixrn3lf0yufupntz8jnr7stb37z"
     }
     function validateRodo() {
         if (!els.rodo.checked) {
-            setError(els.rodo, els.errors.rodo, "Zaznacz zgodę RODO, aby kontynuować.");
+            setError(els.rodo, els.errors.rodo, t("rodo"));
             return false;
         }
         clearError(els.rodo, els.errors.rodo);
@@ -289,6 +319,7 @@ const WEBHOOK_URL = "https://hook.eu2.make.com/mmw4gixrn3lf0yufupntz8jnr7stb37z"
             marketingConsent: !!els.marketing.checked,
             rodoConsent: !!els.rodo.checked,
             submittedAt: new Date().toISOString(),
+            locale: currentLang,
         };
 
         await sendToMake(payload);
@@ -296,7 +327,7 @@ const WEBHOOK_URL = "https://hook.eu2.make.com/mmw4gixrn3lf0yufupntz8jnr7stb37z"
 
     async function sendToMake(payload) {
         if (!WEBHOOK_URL || !/^https?:\/\//i.test(WEBHOOK_URL)) {
-            showTemporaryMessage("error", "Błąd konfiguracji: brak poprawnego adresu Webhook.");
+            showTemporaryMessage("error", t("cfgWebhook"));
             return;
         }
 
@@ -323,15 +354,11 @@ const WEBHOOK_URL = "https://hook.eu2.make.com/mmw4gixrn3lf0yufupntz8jnr7stb37z"
             } catch {
                 msg = await res.text();
             }
-            if (!res.ok) throw new Error(msg || `Błąd: ${res.status}`);
+            if (!res.ok) throw new Error(msg || `HTTP ${res.status}`);
 
-            showTemporaryMessage("success", "Dziękujemy! Do zobaczenia na wydarzeniu.", prevBtnText);
+            showTemporaryMessage("success", t("success"), prevBtnText);
         } catch (err) {
-            showTemporaryMessage(
-                "error",
-                "Ups! Nie udało się wysłać formularza. Spróbuj ponownie.",
-                prevBtnText
-            );
+            showTemporaryMessage("error", t("fail"), prevBtnText);
         }
     }
 })();
